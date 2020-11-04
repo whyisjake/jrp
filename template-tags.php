@@ -24,7 +24,7 @@ function uncode_posts_navigation() {
 
 	if (is_array($paginate_links)) {
 		$output = "<ul class='pagination'>";
-		$prev = get_previous_posts_link('<i class="fa fa-angle-left"></i>');
+		$prev = get_next_posts_link('<i class="fa fa-angle-left"></i>');
 		if ($prev !== NULL) {
 			$output .= '<li class="page-prev">'.$prev.'</li>';
 		} else {
@@ -34,7 +34,7 @@ function uncode_posts_navigation() {
 		foreach ( $paginate_links as $page ) {
 			$output .= '<li><span class="btn-container">'.$page.'</span></li>';
 		}
-		$next = get_next_posts_link('<i class="fa fa-angle-right"></i>');
+		$next = get_previous_posts_link('<i class="fa fa-angle-right"></i>');
 		if ($next !== NULL) {
 			$output .= '<li class="page-next">'.$next.'</li>';
 		} else {
@@ -80,7 +80,7 @@ if ( ! function_exists( 'uncode_post_navigation' ) ) :
 		$output =	'<nav class="post-navigation">
 									<ul class="navigation">';
 
-		$prev = get_previous_post_link( '<li class="page-prev"><span class="btn-container">%link</span></li>', '<i class="fa fa-angle-left"></i><span>'. esc_html($prev_label) . '</span>');
+		$prev = get_next_post_link( '<li class="page-prev"><span class="btn-container">%link</span></li>', '<i class="fa fa-angle-left"></i><span>'. esc_html($prev_label) . '</span>');
 		if ($prev !== '') {
 			$output .= $prev;
 		} else {
@@ -89,7 +89,7 @@ if ( ! function_exists( 'uncode_post_navigation' ) ) :
 		if ($index_btn !== '') {
 			$output .=	'<li class="nav-back"><span class="btn-container">'.$index_btn.'</span></li>';
 		}
-		$next = get_next_post_link( '<li class="page-next"><span class="btn-container">%link</span></li>', '<span>' . esc_html($next_label) .'</span><i class="fa fa-angle-right"></i>');
+		$next = get_previous_post_link( '<li class="page-next"><span class="btn-container">%link</span></li>', '<span>' . esc_html($next_label) .'</span><i class="fa fa-angle-right"></i>');
 		if ($next !== '') {
 			$output .= $next;
 		} else {
